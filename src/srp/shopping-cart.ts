@@ -77,3 +77,4 @@ shoppingCart.clear();
 console.log(shoppingCart.items);
 console.log(shoppingCart.total());
 shoppingCart.checkOut();
+console.log(shoppingCart.orderStatus);
