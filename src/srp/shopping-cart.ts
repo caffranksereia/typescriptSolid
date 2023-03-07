@@ -35,7 +35,7 @@ export class ShoppingCart {
       console.log('Seu carrinho esta vazio');
       return;
     }
-    this.orderStatus = 'closed';
+    this._orderStatus = 'closed';
     this.sendMessage(`Seu pedido com os produtos com total de ${this.total()} foi recebido`);
     this.saveOrder();
     this.clear();
@@ -50,11 +50,11 @@ export class ShoppingCart {
   }
 
   saveOrder(): void {
-    console.log('Pedido salvo');
+    console.log('Pedido salvo com sucesso...');
   }
 
   clear(): void {
-    console.log('Vazio');
+    console.log('Vazio...');
     this._items.length === 0;
   }
 }
@@ -72,7 +72,6 @@ shoppingCart.AddItems({
   name: 'alface',
   price: 8.0,
 });
-shoppingCart.clear();
 
 console.log(shoppingCart.items);
 console.log(shoppingCart.total());
