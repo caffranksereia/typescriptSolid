@@ -1,14 +1,12 @@
-type ItemType = {
-  name: string;
-  price: number;
-};
-type OrderStatusType = 'open' | 'closed';
+import { CardItemInterface } from "./interfaces/card-item-interface";
+import { OrderStatusType } from "./interfaces/orderStatus-interface";
+
 
 export class ShoppingCart {
-  private readonly _items: ItemType[] = [];
-  private _orderStatus: OrderStatusType = 'open';
+  private readonly _items: CardItemInterface[] = [];
+   //
 
-  AddItems(product: ItemType): void {
+  AddItems(product: CardItemInterface): void {
     this._items.push(product);
   }
 
@@ -16,13 +14,11 @@ export class ShoppingCart {
     this._items.splice(index, 1);
   }
 
-  get items(): Readonly<ItemType[]> {
+  get items(): Readonly<CardItemInterface[]> {
     return this._items;
   }
 
-  get orderStatus(): OrderStatusType {
-    return this._orderStatus;
-  }
+
 
   total(): number {
     return +this._items
@@ -30,50 +26,11 @@ export class ShoppingCart {
       .toFixed(2);
   }
 
-  checkOut(): void {
-    if (this.isEmpty()) {
-      console.log('Seu carrinho esta vazio');
-      return;
-    }
-    this._orderStatus = 'closed';
-    this.sendMessage(`Seu pedido com os produtos com total de ${this.total()} foi recebido`);
-    this.saveOrder();
-    this.clear();
-  }
+  //
 
-  isEmpty(): boolean {
-    return this._items.length === 0;
-  }
-
-  sendMessage(msg: string): void {
-    console.log('Mensagem', msg);
-  }
-
-  saveOrder(): void {
-    console.log('Pedido salvo com sucesso...');
-  }
 
   clear(): void {
     console.log('Vazio...');
     this._items.length === 0;
   }
 }
-
-const shoppingCart = new ShoppingCart();
-shoppingCart.AddItems({
-  name: 'Abobora',
-  price: 3.0,
-});
-shoppingCart.AddItems({
-  name: 'pimentao',
-  price: 4.0,
-});
-shoppingCart.AddItems({
-  name: 'alface',
-  price: 8.0,
-});
-
-console.log(shoppingCart.items);
-console.log(shoppingCart.total());
-shoppingCart.checkOut();
-console.log(shoppingCart.orderStatus);
