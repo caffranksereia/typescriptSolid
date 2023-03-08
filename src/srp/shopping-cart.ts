@@ -18,16 +18,15 @@ export class ShoppingCart {
     return this._items;
   }
 
-
-
   total(): number {
     return +this._items
       .reduce((total, next) => total + next.price, 0)
       .toFixed(2);
   }
 
-  //
-
+  isEmpty(): boolean {
+    return this._items.length === 0;
+  }
 
   clear(): void {
     console.log('Vazio...');
