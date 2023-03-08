@@ -1,12 +1,16 @@
+import { Messaging } from "./interfaces/message-interface";
 import { OrderStatusType } from "./interfaces/orderStatus-interface";
+import { Persisting } from "./interfaces/persistency-interface";
 import { ShoppingCart } from "./shopping-cart";
 
 export class Order {
   private _orderStatus: OrderStatusType = 'open';
 
-  constructor(private readonly cart: ShoppingCart) {
-
-  }
+  constructor(// injecao de independencia
+    private readonly cart: ShoppingCart,
+    private readonly messaging: Messaging,
+    private readonly persisting: Persisting,
+  ) {}
 
   get orderStatus(): OrderStatusType {
     return this._orderStatus;
@@ -17,23 +21,10 @@ export class Order {
       console.log('Seu carrinho esta vazio');
       return;
     }
-    this.sendMessage(`Seu pedido com os produtos com total de ${this.total()}
+    this.messaging
+      .sendMessage(`Seu pedido com os produtos com total de ${this.cart.total()}
     wfoi recebido`);
-    this.saveOrder();
-    this.clear();
+    this.persisting.saveOrder();
+    this.cart.clear();
   }
-
-   isEmpty(): boolean {
-    return this._items.length === 0;
-  }
-  //
-  sendMessage(msg: string): void {
-    console.log('Mensagem', msg);
-  }
-  //
-  saveOrder(): void {
-    console.log('Pedido salvo com sucesso...');
-  }
-
-
 }
