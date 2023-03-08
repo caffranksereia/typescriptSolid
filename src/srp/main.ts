@@ -1,6 +1,6 @@
-import { Messaging } from "./interfaces/message-interface";
-import { Persisting } from "./interfaces/persistency-interface";
-import { Order } from "./order";
+import { Messaging } from "./services/message-interface";
+import { Persisting } from "./services/persistency-interface";
+import { Order } from "./entities/order";
 import { Products } from "./products";
 import { ShoppingCart } from "./shopping-cart";
 
