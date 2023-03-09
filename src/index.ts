@@ -1,1 +1,1 @@
-
+Liskov Substition Princeple
