@@ -4,6 +4,7 @@ import { OrderStatusType } from "./interfaces/orderStatus-interface";
 
 
 export class ShoppingCart {
+  // Alto nivel
   private readonly _items: CardItemInterface[] = [];
 
   constructor(private readonly discount: Discount) {}

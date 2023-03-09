@@ -5,6 +5,7 @@ import { ShoppingCart } from "./shopping-cart";
 import { CustumerOrder } from "./interfaces/custumer-protocol-interface";
 
 export class Order {
+  //Alto nivel
   private _orderStatus: OrderStatusType = 'open';
 
   constructor(

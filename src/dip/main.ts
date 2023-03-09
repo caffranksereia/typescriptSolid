@@ -1,6 +1,10 @@
 /*
-Interface segragation priciple (Principio da segregacao de interface) -
-os clinetes nao deve ser forcados a depnder de types,  interfaces ou membros abstratos que nao utilizam
+Modulos de alto nivel nao devem depender de modulos de baixo nivel. Ambos devem depender de abstracoes.
+DEnda de abstracoes, nao de implementacoes.
+Abstracoes nao devem depdneer de detalhes. detalhes devm depender de abstracoes.
+
+Classes de baixo nivel soa classes que executam tarefgas (os detalhes)
+Classes de alto nivel sao classes que gerenciam as classes de baixo nivel.
 */
 
 import { Messaging } from "./services/message-interface";
