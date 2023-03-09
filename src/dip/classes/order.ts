@@ -1,8 +1,8 @@
-import { Messaging } from "../services/message-interface";
 import { OrderStatusType } from "./interfaces/orderStatus-interface";
-import { Persisting } from "../services/persistency-interface";
-import { ShoppingCart } from "./shopping-cart";
 import { CustumerOrder } from "./interfaces/custumer-protocol-interface";
+import { ShoppingCartProcotolInterface } from "./interfaces/shopping-cart-protocol-interface";
+import { MessagingInterface } from "./interfaces/messaging-interface";
+import { PersistingInterface } from "./interfaces/persistency-inteface";
 
 export class Order {
   //Alto nivel
@@ -10,9 +10,9 @@ export class Order {
 
   constructor(
     // injecao de independencia
-    private readonly cart: ShoppingCart,
-    private readonly messaging: Messaging,
-    private readonly persisting: Persisting,
+    private readonly cart: ShoppingCartProcotolInterface,
+    private readonly messaging: MessagingInterface,
+    private readonly persisting: PersistingInterface,
     private readonly customer: CustumerOrder,
   ) {}
 

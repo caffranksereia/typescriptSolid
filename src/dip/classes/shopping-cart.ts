@@ -1,9 +1,10 @@
 import { Discount } from "./discount";
 import { CardItemInterface } from "./interfaces/card-item-interface";
 import { OrderStatusType } from "./interfaces/orderStatus-interface";
+import { ShoppingCartProcotolInterface } from "./interfaces/shopping-cart-protocol-interface";
 
 
-export class ShoppingCart {
+export class ShoppingCart implements ShoppingCartProcotolInterface {
   // Alto nivel
   private readonly _items: CardItemInterface[] = [];
 
