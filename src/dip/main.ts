@@ -14,6 +14,7 @@ import { Products } from "./products";
 import { ShoppingCart } from "./shopping-cart";
 import { NoDiscount } from "./classes/discount";
 import { EnterpriseCustumer, IndividualCustumer } from "./classes/customer";
+import { MessagingInterface } from "./classes/interfaces/messaging-interface";
 
 const noDiscount = new NoDiscount();
 const individualCustumer = new IndividualCustumer(
@@ -26,11 +27,20 @@ const enterpriseCustumer = new EnterpriseCustumer(
   '111.111.111.11.1',
 );
 const shoppingCart = new ShoppingCart(noDiscount);
-const message = new Messaging();
+
 const persistency = new Persisting();
+
+class MessagingMock implements MessagingInterface {
+  sendMessage(msg: string): void {
+    console.log('aaaaa lunaaaaa ');
+  }
+}
+
+const messagingMock = new MessagingMock();
+
 const order = new Order(
   shoppingCart,
-  message,
+  messagingMock,
   persistency,
   enterpriseCustumer,
   individualCustumer,
